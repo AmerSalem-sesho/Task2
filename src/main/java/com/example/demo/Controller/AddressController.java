@@ -17,8 +17,10 @@ public class AddressController {
     private AddressService addressService;
 
     @GetMapping("/all")
-    public List<Address> getAllAddresses(){
-        return addressService.getAllAddresses();
+    public List<Address> getAllAddresses(@RequestParam(defaultValue = "0") Integer pageNo,
+                                         @RequestParam(defaultValue = "10") Integer pageSize,
+                                         @RequestParam(defaultValue = "id") String sortBy){
+        return addressService.getAllAddresses(pageNo,pageSize,sortBy);
     }
 
     @PostMapping

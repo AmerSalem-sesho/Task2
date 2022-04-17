@@ -23,8 +23,10 @@ public class DepartmentController {
 
 
     @GetMapping("/all")
-    public List<Department> getAllDepartments(){
-        return departmentService.getAllDepartments();
+    public List<Department> getAllDepartments(@RequestParam(defaultValue = "0") Integer pageNo,
+                                              @RequestParam(defaultValue = "10") Integer pageSize,
+                                              @RequestParam(defaultValue = "id") String sortBy){
+        return departmentService.getAllDepartments(pageNo,pageSize,sortBy);
     }
     @PostMapping
     public void addDepartment(@RequestBody DepartmentDto departmentDto){
